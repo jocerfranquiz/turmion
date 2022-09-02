@@ -20,7 +20,7 @@ class Game:
     #     pass
 
     def new_game(self):
-       self.map = Map(self)
+        self.map = Map(self)
 
     def update(self):
         pg.display.flip()
@@ -50,7 +50,7 @@ class Game:
             #         self.state = 'start'
 
     def run(self):
-        while True: #self.running:
+        while True:  # self.running:
             self.check_events()
             self.update()
             self.draw()
