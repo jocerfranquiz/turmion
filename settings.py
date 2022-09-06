@@ -9,6 +9,15 @@ PLAYER_POS = 1.5, 5  # MINI_MAP
 PLAYER_ANGLE = 0
 PLAYER_SPEED = 0.004
 PLAYER_ROT_SPEED = 0.002
+PLAYER_SIZE_SCALE = 60
+PLAYER_MAX_HEALTH = 100
+
+MOUSE_SENSITIVITY = 0.0003
+MOUSE_MAX_REL = 40
+MOUSE_BORDER_LEFT = 100
+MOUSE_BORDER_RIGHT = WIDTH - MOUSE_BORDER_LEFT
+
+FLOOR_COLOR = (30, 30, 30)
 
 # ray casting settings
 FOV = math.tau / 6  # FOV = field of view
@@ -20,3 +29,6 @@ MAX_DEPTH = 20  # max intersections with walls
 
 SCREEN_DIST = HALF_WIDTH / math.tan(HALF_FOV)  # distance from player to screen
 SCALE = WIDTH // NUM_RAYS  # scale of the wall
+
+TEXTURE_SIZE = 256
+HALF_TEXTURE_SIZE = TEXTURE_SIZE // 2
