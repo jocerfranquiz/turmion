@@ -45,7 +45,7 @@ class ObjectRenderer:
         pg.draw.rect(self.screen, FLOOR_COLOR, (0, HALF_HEIGHT, WIDTH, HEIGHT))
 
     def render_game_objects(self):
-        list_objects = self.game.raycasting.objects_to_render
+        list_objects = sorted(self.game.raycasting.objects_to_render, key=lambda t: t[0], reverse=True)
         for depth, image, pos in list_objects:
             self.screen.blit(image, pos)
 
@@ -56,7 +56,7 @@ class ObjectRenderer:
 
     def load_wall_textures(self):
         return {
-            1: self.get_texture('resources/textures/tileable1d.png'),
+            1: self.get_texture('resources/textures/1.png'),
             2: self.get_texture('resources/textures/2.png'),
             3: self.get_texture('resources/textures/3.png'),
             4: self.get_texture('resources/textures/4.png'),
