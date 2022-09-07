@@ -81,7 +81,7 @@ class RayCasting:
                 y_vert += dy
                 depth_vert += delta_depth
 
-            # depth,texture offset
+            # depth, texture offset
             if depth_vert < depth_hor:
                 depth, texture = depth_vert, texture_vert
                 y_vert %= 1
@@ -91,7 +91,7 @@ class RayCasting:
                 x_hor %= 1
                 offset = (1 - x_hor) if sin_a > 0 else x_hor
 
-            # correct fishbowl effect
+            # remove fishbowl effect
             depth *= math.cos(self.game.player.angle - ray_angle)
 
             # projection
