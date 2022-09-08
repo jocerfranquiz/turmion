@@ -30,14 +30,3 @@ class Weapon(AnimatedSprite):
     def update(self):
         self.check_animation_time()
         self.animate_shot()
-
-    # def animate_shot(self):
-    #     if self.reloading:
-    #         self.game.player.shot = False
-    #         if self.animation_trigger:
-    #             self.images.rotate(-1)
-    #             self.image = self.images[0]
-    #             self.frame_counter += 1
-    #             if self.frame_counter == self.num_images:
-    #                 self.reloading = False
-    #                 self.frame_counter = 0
