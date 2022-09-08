@@ -33,9 +33,9 @@ class ObjectRenderer:
     #     for i, char in enumerate(health):
     #         self.screen.blit(self.digits[char], (i * self.digit_size, 0))
     #     self.screen.blit(self.digits['10'], ((i + 1) * self.digit_size, 0))
-    #
-    # def player_damage(self):
-    #     self.screen.blit(self.blood_screen, (0, 0))
+
+    def player_damage(self):
+        self.screen.blit(self.blood_screen, (0, 0))
 
     def draw_background(self):
         self.sky_offset = (self.sky_offset + 4.5 * self.game.player.rel) % WIDTH
