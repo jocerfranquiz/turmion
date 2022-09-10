@@ -2,14 +2,14 @@ from settings import *
 import pygame as pg
 import math
 
+PLAYER_DOT_SIZE = 8
+
 
 class Player:
     def __init__(self, game):
         self.game = game
         self.x, self.y = PLAYER_POS
         self.angle = PLAYER_ANGLE
-        self.speed = PLAYER_SPEED
-        self.rotation_speed = PLAYER_ROT_SPEED
 
     def movement(self):
         sin_a = math.sin(self.angle)
@@ -52,10 +52,16 @@ class Player:
             self.y += dy
 
     def draw(self):
-        pg.draw.line(self.game.screen, 'yellow', (self.x * 100, self.y * 100),
-                    (self.x * 100 + WIDTH * math.cos(self.angle),
-                     self.y * 100 + WIDTH * math. sin(self.angle)), 2)
-        pg.draw.circle(self.game.screen, 'green', (self.x * 100, self.y * 100), 15)
+        x, y = (self.x, self.y)
+        pos = (y * TILE_SIZE + WIDTH // 8,
+               - x * TILE_SIZE + HALF_HEIGHT + MAP_SIZE[1] // 2 + TILE_SIZE)
+
+        # pg.draw.line(self.game.screen, 'yellow', (self.x * 100, self.y * 100),
+        #              (self.x * 100 + WIDTH * math.cos(self.angle),
+        #               self.y * 100 + WIDTH * math.sin(self.angle)), 2)
+
+        pg.draw.rect(self.game.screen, 'green',
+                     (pos[0], pos[1], PLAYER_DOT_SIZE, PLAYER_DOT_SIZE))
 
     def mouse_control(self):
         mx, my = pg.mouse.get_pos()

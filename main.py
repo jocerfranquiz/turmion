@@ -19,6 +19,7 @@ class Game:
         self.screen = pg.display.set_mode(RES)
         self.clock = pg.time.Clock()
         self.delta_time = 1
+        self.toggle_map = True
         self.new_game()
 
     def new_game(self):
@@ -36,19 +37,26 @@ class Game:
         self.animated_sprite.update()
         pg.display.flip()
         self.delta_time = self.clock.tick(FPS)
-        pg.display.set_caption(f'{self.clock.get_fps():.1f}')
+        pg.display.set_caption(f'{self.clock.get_fps() :.1f}')
 
     def draw(self):
-        # self.screen.fill('black')
         self.object_renderer.draw()
-        # self.map.draw()
-        # self.player.draw()
+        if self.toggle_map:
+            self.map.draw()
+            #self.player.draw()
 
     def check_events(self):
         for event in pg.event.get():
             if event.type == pg.QUIT or (event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE):
                 pg.quit()
                 sys.exit()
+            elif event.type == pg.KEYDOWN and event.key == pg.K_F3:
+                if self.toggle_map:
+                    self.toggle_map = False
+                elif not self.toggle_map:
+                    self.toggle_map = True
+            elif event.type == pg.KEYDOWN and event.key == pg.K_F5:
+                self.new_game()
 
     def run(self):
         while True:
