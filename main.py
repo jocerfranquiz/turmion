@@ -43,7 +43,7 @@ class Game:
         self.object_renderer.draw()
         if self.toggle_map:
             self.map.draw()
-            #self.player.draw()
+            self.player.draw()
 
     def check_events(self):
         for event in pg.event.get():

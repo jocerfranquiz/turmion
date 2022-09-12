@@ -35,19 +35,14 @@ class Map:
 
     def draw(self):  # test method, only mesh of the map
 
-        map_pos_w, map_pos_h = WIDTH // 8, HALF_HEIGHT // 2
-        map_size_w, map_size_h = HEIGHT // 4, WIDTH / 4
-        tile_size_w, tile_size_h = map_size_w // MAP_HEIGHT, map_size_h // MAP_WIDTH
+        pg.draw.rect(self.game.screen, 'black', (MAP_POS_W, MAP_POS_H, MAP_SIZE_W, MAP_SIZE_H))
 
-        pg.draw.rect(self.game.screen, 'black', (map_pos_w, map_pos_h, map_size_w, map_size_h))
+        for pos in self.world_map:
+            x, y = pos
+            w = y * TILE_MAP_W + MAP_POS_W
+            h = - x * TILE_MAP_H + MAP_POS_H + MAP_SIZE_H - TILE_MAP_H
 
-        [pg.draw.rect(self.game.screen, 'darkgray', (
-            pos[1] * tile_size_w + map_pos_w,
-            - pos[0] * tile_size_h + map_pos_w + map_size_h,
-            tile_size_w, tile_size_h))
-         for pos in self.world_map]
+            pg.draw.rect(self.game.screen, 'darkgray', (w, h, TILE_MAP_W, TILE_MAP_H))
 
         pg.draw.rect(self.game.screen, 'blue',
-                     (map_pos_w + tile_size_w, map_pos_h + map_size_h - 2 * tile_size_h, tile_size_w, tile_size_h))
-
-        print(self.world_map)
+                     (MAP_POS_W + TILE_MAP_W, MAP_POS_H + MAP_SIZE_H - 2 * TILE_MAP_H, TILE_MAP_W, TILE_MAP_H))
